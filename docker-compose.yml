@@ -30,5 +30,13 @@ services:
     ports:
       - 8761:8761
 
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sqlserver-wallet
+    environment:
+      - SA_PASSWORD=sqlServer@Test123
+      - ACCEPT_EULA=Y
+    ports:
+      - 1433:1433
 volumes:
   MONGO_DATA:
