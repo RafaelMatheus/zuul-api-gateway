@@ -38,5 +38,18 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - 1433:1433
+    volumes:
+      - SQL_DATA:/data/db
+  conta-service:
+    image: conta
+    container_name: conta-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=container
+    depends_on:
+      - sqlserver
+      - eureka-server
+      - rabbitmq
+
 volumes:
   MONGO_DATA:
+  SQL_DATA:
